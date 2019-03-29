@@ -46,6 +46,7 @@ class ClassCreate extends Component {
           </CollapseHeader>
           <CollapseBody style={{ width: 350 }}>
             <ClassForm
+              edit={false}
               handleCollapse={() => this.setState({ collapsed: false })}
             />
           </CollapseBody>

@@ -15,18 +15,38 @@ import {
 } from "native-base";
 
 import * as actionCreators from "../../../Store/actions/classActions";
+import ClassForm from "./ClassForm";
 
 class ClassItem extends Component {
+  state = {
+    edit: false
+  };
+
+  toggleEdit = () => {
+    const newVal = !this.state.edit;
+    this.setState({ edit: newVal });
+  };
+
   render() {
     const { classroom } = this.props;
+    if (this.state.edit) {
+      return (
+        <ClassForm
+          classroom={classroom}
+          edit={this.state.edit}
+          toggleEdit={this.toggleEdit}
+        />
+      );
+    }
     return (
       <SwipeRow
         leftOpenValue={75}
         rightOpenValue={-75}
+        closeOnRowBeginSwipe={true}
         left={
           <Button
             style={{ backgroundColor: "#A47B88" }}
-            onPress={() => alert("Add")}
+            onPress={() => this.setState({ edit: true })}
           >
             <Icon active name="edit" type="FontAwesome" />
           </Button>
