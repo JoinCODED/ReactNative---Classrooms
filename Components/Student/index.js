@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { CardItem, Text } from "native-base";
+import { CardItem, Text, Icon } from "native-base";
 
 class Student extends Component {
   render() {
@@ -10,6 +10,8 @@ class Student extends Component {
         <Text>
           {student.first_name} {student.last_name}
         </Text>
+        <Icon name="edit" type="FontAwesome" />
+        <Icon name="trash" />
       </CardItem>
     );
   }

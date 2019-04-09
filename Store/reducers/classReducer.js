@@ -39,7 +39,6 @@ const classReducer = (state = initialState, action) => {
       let filteredClassrooms = state.classrooms.filter(
         classroom => classroom.id !== action.payload.id
       );
-      console.log("FILTERED CLASSROOM IN REDUCER", filteredClassrooms);
       return {
         ...state,
         classrooms: [...filteredClassrooms]

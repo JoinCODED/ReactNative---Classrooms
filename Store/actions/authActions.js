@@ -58,7 +58,7 @@ export const login = (userData, navigation) => {
       dispatch(setCurrentUser(decodedUser));
       navigation.replace("List");
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 };
@@ -73,7 +73,7 @@ export const signup = (userData, navigation) => {
       dispatch(setCurrentUser(decodedUser));
       navigation.replace("List");
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 };

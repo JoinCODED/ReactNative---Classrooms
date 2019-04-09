@@ -62,7 +62,10 @@ class Signup extends Component {
           value={this.state.password}
           onChangeText={password => this.setState({ password })}
         />
-        <TouchableOpacity style={styles.authButtonStyle}>
+        <TouchableOpacity
+          style={styles.authButtonStyle}
+          onPress={() => this.props.signup(this.state, this.props.navigation)}
+        >
           <Text style={styles.authButtonText}>Register</Text>
         </TouchableOpacity>
         <Button

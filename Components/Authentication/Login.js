@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import NumericInput from "react-native-numeric-input";
 
 import { Button } from "native-base";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -23,6 +24,7 @@ class Login extends Component {
   componentDidMount() {
     this.props.checkForToken();
   }
+
   render() {
     if (this.props.user) {
       this.props.navigation.replace("List");

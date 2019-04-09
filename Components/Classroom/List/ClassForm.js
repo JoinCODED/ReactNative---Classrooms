@@ -4,65 +4,35 @@ import * as actionCreators from "../../../Store/actions/classActions";
 
 // Styling
 import styles from "../styles";
-import { TouchableOpacity } from "react-native";
+import { TextInput, TouchableOpacity } from "react-native";
 import { Body, Input, Item, Right, Text } from "native-base";
+import CreateButton from "../Buttons/CreateButton";
+import UpdateButton from "../Buttons/UpdateButton";
 
 class ClassForm extends Component {
   state = {
     subject: this.props.classroom.subject || "",
-    grade: this.props.classroom.grade || 0,
+    grade: this.props.classroom.grade || "",
     year: this.props.classroom.year || "",
     id: this.props.classroom.id || ""
   };
 
-  renderButton = () => {
-    if (this.props.edit) {
-      return (
-        <TouchableOpacity
-          onPress={this.handleUpdate}
-          style={styles.createButton}
-        >
-          <Text style={styles.createButtonText}>Update Classroom</Text>
-        </TouchableOpacity>
-      );
-    } else {
-      return (
-        <>
-          <Body>
-            <TouchableOpacity
-              onPress={this.handleCreate}
-              style={styles.createButton}
-            >
-              <Text style={{ ...styles.createButtonText, marginRight: 20 }}>
-                Create
-              </Text>
-            </TouchableOpacity>
-          </Body>
-          <Right>
-            <TouchableOpacity
-              onPress={this.handleCreate}
-              style={styles.createButton}
-            >
-              <Text style={styles.createButtonText}>Add Students</Text>
-            </TouchableOpacity>
-          </Right>
-        </>
-      );
-    }
-  };
-
   handleCreate = async () => {
-    let classroom = this.state;
-    delete classroom.edit;
     await this.props.classroomCreate(this.state);
     this.props.handleCollapse();
   };
 
   handleUpdate = async () => {
-    let classroom = this.state;
-    delete classroom.edit;
     await this.props.classroomUpdate(this.state);
     this.props.toggleEdit();
+  };
+
+  renderButton = () => {
+    if (this.props.edit) {
+      return <UpdateButton handleUpdate={this.handleUpdate} />;
+    } else {
+      return <CreateButton handleCreate={this.handleCreate} />;
+    }
   };
 
   render() {
@@ -80,6 +50,7 @@ class ClassForm extends Component {
         <Item>
           <Input
             placeholder="Grade"
+            keyboardType={"numeric"}
             value={this.state.grade}
             onChangeText={grade => this.setState({ grade })}
           />
