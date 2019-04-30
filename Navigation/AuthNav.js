@@ -7,6 +7,7 @@ import ClassroomList from "../Components/Classroom/List";
 import Logout from "../Components/Authentication/Logout";
 import ClassroomDetail from "../Components/Classroom/Detail";
 import Welcome from "../Components/Welcome";
+import StudentsPicker from "../Components/Student/StudentsPicker";
 
 const AuthNav = createStackNavigator(
   {
@@ -14,7 +15,11 @@ const AuthNav = createStackNavigator(
     Signup: Signup,
     List: ClassroomList,
     ClassroomDetail: ClassroomDetail,
-    Welcome: Welcome
+    Welcome: Welcome,
+    StudentPicker: {
+      screen: StudentsPicker,
+      mode: "modal"
+    }
   },
   {
     initialRouteName: "Login",

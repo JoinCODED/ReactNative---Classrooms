@@ -11,3 +11,8 @@ export const CLASSROOM_DELETE = "CLASSROOM_DELETE";
 
 // Students Actions
 export const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
+export const FETCH_STUDENT_BY_ID = "FETCH_STUDENT_BY_ID";
+
+// Enrolled Students Actions
+export const FETCH_ENROLLED_STUDENTS = "FETCH_ENROLLED_STUDENTS";
+export const ENROLL_STUDENT = "ENROLL_STUDENT";
